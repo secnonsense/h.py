@@ -1,2 +1,2 @@
 # h.py
-Basic HTTP client written in Python
+Basic HTTP client written in Python 2
