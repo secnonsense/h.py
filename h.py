@@ -14,6 +14,9 @@ parser.add_argument("-e", "--edge", help="Use Edge User Agent", action="store_tr
 parser.add_argument("URL", help="Enter a url with or without leading http:// or https://")
 args = parser.parse_args()
 
+if not args.headers and not args.body and not args.status:
+    args.body = True
+
 x=1
 filename = ''
 host = args.URL.split('/')
