@@ -49,9 +49,11 @@ conn.request(method, filename, None, headers)
 
 httpResponse = conn.getresponse() 
 if args.status:
-    print "\nStatus: ", (httpResponse.status) 
+    print "\nRESPONSE CODE: ", (httpResponse.status) 
 if args.headers:
-    print "\nHeaders: \n", httpResponse.msg  
-if args.body:
-    print "\n", httpResponse.read()
+    print "\n========= HEADERS ==========\n", httpResponse.msg  
+if args.body and not args.status and not args.headers:
+    print httpResponse.read()
+else:
+    print "============ BODY =============\n", httpResponse.read()    
 conn.close()
