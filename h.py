@@ -19,7 +19,7 @@ args = parser.parse_args()
 if not args.headers and not args.body and not args.status:
     args.body = True
 
-x=1
+x = 1
 filename = ''
 host = args.URL.split('/')
 
@@ -28,15 +28,15 @@ if "http" in host[0]:
         args.ssl = True
     host = host[2:]
 
-for x in range (1, len(host), 1):
-        filename = filename+'/'+host[x]
-        x=x+1
+for x in range(1, len(host), 1):
+    filename = filename+'/'+host[x]
+    x = x+1
 method = 'GET'
 headers = {"Accept": "image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-powerpoint, application/vnd.ms-excel, application/msword, application/x-shockwave-flash, */*", "Accept-Language": "en-us", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; MANM; rv:11.0) like Gecko", "Connection": "Keep-Alive"}
 
 if args.ie6:
     headers["User-Agent"] = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0; .NET CLR 1.1.4322; .NET CLR 2.0.50727)"
-elif args.chrome:   
+elif args.chrome:
     headers["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
 elif args.safari:
     headers["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.8 (KHTML, like Gecko)"
@@ -50,16 +50,16 @@ elif args.malware:
 if args.ssl:
     conn = httplib.HTTPSConnection(host[0])
 else:
-    conn = httplib.HTTPConnection(host[0])	
+    conn = httplib.HTTPConnection(host[0])
 conn.request(method, filename, None, headers)
 
-httpResponse = conn.getresponse() 
+httpResponse = conn.getresponse()
 if args.status:
-    print "\nRESPONSE CODE: ", (httpResponse.status) 
+    print "\nRESPONSE CODE: ", (httpResponse.status)
 if args.headers:
-    print "\n========= HEADERS ==========\n", httpResponse.msg  
+    print "\n========= HEADERS ==========\n", httpResponse.msg
 if args.body and not args.status and not args.headers:
     print httpResponse.read()
 else:
-    print "============ BODY =============\n", httpResponse.read()    
+    print "============ BODY =============\n", httpResponse.read()
 conn.close()
