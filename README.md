@@ -15,6 +15,10 @@ Add -s for ssl (HTTPS) support
 
 Use the response body only requests (-b) with file redirection to save the web page locally
 
+./h.py -xr https://www.google.com
+
+http:// or https:// prefixes are supported, https:// negates the need for the -s switch for ssl support
+
 By default the script uses an ie11 user-agent, if you want to specify other agents use:
 
 -i = internet explorer 6.0
