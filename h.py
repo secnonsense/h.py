@@ -53,5 +53,5 @@ if args.status:
 if args.headers:
     print "\nHeaders: \n", httpResponse.msg  
 if args.body:
-    print "\n", httpResponse.read()
+    print httpResponse.read()
 conn.close()
