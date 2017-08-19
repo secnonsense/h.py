@@ -13,7 +13,9 @@ Add -s for ssl (HTTPS) support
 
 ./h.py -b www.site.com > test.html
 
-Use the response body only requests (-b) with file redirection to save the web page locally
+Use the response body only option (-b) with file redirection to save the web page locally
+
+note - if only a url is specified the default will be to return just the reponse body
 
 ./h.py -xr https://www.google.com
 
