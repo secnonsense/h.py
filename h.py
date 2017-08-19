@@ -19,6 +19,8 @@ filename = ''
 host = args.URL.split('/')
 
 if "http" in host[0]:
+    if host[0] == "https:":
+        args.ssl = True
     host = host[2:]
 
 for x in range (1, len(host), 1):
