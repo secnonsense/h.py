@@ -11,6 +11,8 @@ parser.add_argument("-c", "--chrome", help="Use Chrome on Mac User Agent", actio
 parser.add_argument("-i", "--ie6", help="Use Internet Explorer 6.0 User Agent", action="store_true")
 parser.add_argument("-m", "--safari", help="Use Mac Safari User Agent", action="store_true")
 parser.add_argument("-e", "--edge", help="Use Edge User Agent", action="store_true")
+parser.add_argument("-v", "--malware", help="Use known bad User Agent malware", action="store_true")
+parser.add_argument("-z", "--meterpreter", help="Use known hacking tool User Agent Meterpreter", action="store_true")
 parser.add_argument("URL", help="Enter a url with or without leading http:// or https://")
 args = parser.parse_args()
 
@@ -40,6 +42,10 @@ elif args.safari:
     headers["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.8 (KHTML, like Gecko)"
 elif args.edge:
     headers["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063"
+elif args.meterpreter:
+    headers["User-Agent"] = "Meterpreter"
+elif args.malware:
+    headers["User-Agent"] = "malware"
 
 if args.ssl:
     conn = httplib.HTTPSConnection(host[0])
