@@ -11,7 +11,7 @@ parser.add_argument("-c", "--chrome", help="Use Chrome on Mac User Agent", actio
 parser.add_argument("-i", "--ie6", help="Use Internet Explorer 6.0 User Agent", action="store_true")
 parser.add_argument("-m", "--safari", help="Use Mac Safari User Agent", action="store_true")
 parser.add_argument("-e", "--edge", help="Use Edge User Agent", action="store_true")
-parser.add_argument("URL", help="Enter a url without leading http:// or https://")
+parser.add_argument("URL", help="Enter a url with or without leading http:// or https://")
 args = parser.parse_args()
 
 x=1
