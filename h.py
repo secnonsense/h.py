@@ -18,6 +18,9 @@ x=1
 filename = ''
 host = args.URL.split('/')
 
+if "http" in host[0]:
+    host = host[2:]
+
 for x in range (1, len(host), 1):
         filename = filename+'/'+host[x]
         x=x+1
