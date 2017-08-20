@@ -63,12 +63,9 @@ if args.body and not args.status and not args.headers and not args.save:
     print httpResponse.read()
 elif args.save:
     print filename
-    file = open("output",'w') 
-    file.write(httpResponse.read()) 
-    file.close() 
+    output = open("output",'w')
+    output.write(httpResponse.read())
+    output.close()
 elif args.body:
     print "============ BODY =============\n", httpResponse.read()
 conn.close()
-
-
-
