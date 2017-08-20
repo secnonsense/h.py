@@ -14,7 +14,7 @@ parser.add_argument("-m", "--safari", help="Use Mac Safari User Agent", action="
 parser.add_argument("-e", "--edge", help="Use Edge User Agent", action="store_true")
 parser.add_argument("-v", "--malware", help="Use known bad User Agent malware", action="store_true")
 parser.add_argument("-z", "--meterpreter", help="Use known hacking tool User Agent Meterpreter", action="store_true")
-parser.add_argument("-o", "--save", help="Save the body to an html file", action="store_true")
+parser.add_argument("-o", "--save", help="Save the body to a file", action="store_true")
 parser.add_argument("URL", help="Enter a url with or without leading http:// or https://")
 args = parser.parse_args()
 
