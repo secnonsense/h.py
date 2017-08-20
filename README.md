@@ -11,11 +11,15 @@ This will give http response code (-r) and response headers (-x)
 
 Add -s for ssl (HTTPS) support
 
-./h.py -b www.site.com > test.html
+./h.py -b www.site.com 
 
-Use the response body only option (-b) with file redirection to save the web page locally
+Use the -b option to display the response body to the screen
 
 note - if only a url is specified the default will be to return just the reponse body
+
+./h.py -o www.site.com 
+
+Use the -o option to save the response body to a file called "output"
 
 ./h.py -xr https://www.google.com
 
