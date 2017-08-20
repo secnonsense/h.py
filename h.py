@@ -67,7 +67,7 @@ elif args.save:
     file = open("output",'w') 
     file.write(httpResponse.read()) 
     file.close() 
-else:
+elif args.body:
     print "============ BODY =============\n", httpResponse.read()
 conn.close()
 
