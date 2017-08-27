@@ -6,17 +6,22 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-x", "--headers", help="print the http headers of the http response", action="store_true")
 parser.add_argument("-b", "--body", help="print the body of the http response", action="store_true")
 parser.add_argument("-r", "--status", help="print the status code of the http response", action="store_true")
+
 parser.add_argument("-s", "--ssl", help="choose if the request is over ssl", action="store_true")
+
 parser.add_argument("-c", "--chrome", help="Use Chrome on Mac User Agent", action="store_true")
 parser.add_argument("-i", "--ie6", help="Use Internet Explorer 6.0 User Agent", action="store_true")
 parser.add_argument("-m", "--safari", help="Use Mac Safari User Agent", action="store_true")
 parser.add_argument("-e", "--edge", help="Use Edge User Agent", action="store_true")
+
 parser.add_argument("-v", "--malware", help="Use known bad User Agent malware", action="store_true")
 parser.add_argument("-o", "--openvas", help="Use known bad User Agent OpenVAS", action="store_true")
 parser.add_argument("-z", "--meterpreter", help="Use known hacking tool User Agent Meterpreter", action="store_true")
+
 parser.add_argument("-f", "--save", help="Save the body to a file", action="store_true")
 parser.add_argument("-p", "--proxy", help="Specify the IP address and port of proxy - 127.0.0.1:8080", action="store", dest="proxy")
 parser.add_argument("-u", "--uagent", help="Specify a custom user-agent in quotes", action="store", dest="uagent")
+
 parser.add_argument("URL", help="Enter a url with or without leading http:// or https://")
 args = parser.parse_args()
 
