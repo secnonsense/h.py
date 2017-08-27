@@ -16,6 +16,7 @@ parser.add_argument("-o", "--openvas", help="Use known bad User Agent OpenVAS", 
 parser.add_argument("-z", "--meterpreter", help="Use known hacking tool User Agent Meterpreter", action="store_true")
 parser.add_argument("-f", "--save", help="Save the body to a file", action="store_true")
 parser.add_argument("-p", "--proxy", help="Specify the IP address and port of proxy - 127.0.0.1:8080", action="store", dest="proxy")
+parser.add_argument("-u", "--uagent", help="Specify a custom user-agent in quotes", action="store", dest="uagent")
 parser.add_argument("URL", help="Enter a url with or without leading http:// or https://")
 args = parser.parse_args()
 
@@ -51,6 +52,8 @@ elif args.malware:
     headers["User-Agent"] = "malware"
 elif args.openvas:
     headers["User-Agent"] = "OpenVAS"
+elif args.uagent:
+    headers["User-Agent"] = args.uagent
 
 if args.proxy:
     if args.ssl or "https://" in args.URL:
