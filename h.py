@@ -53,13 +53,16 @@ elif args.openvas:
     headers["User-Agent"] = "OpenVAS"
 
 if args.proxy:
+    if args.ssl or "https://" in args.URL:
+        print "\nproxy is not supported for SSL at this time\n"
+        quit()
     host[0] = args.proxy
     if "http://" not in args.URL: 
         filename = "http://" + args.URL
     else:
         filename = args.URL    
-    print host[0]
-    print filename
+    print "proxy: " + host[0]
+    print "URL: " + filename
 
 if args.ssl:
     conn = httplib.HTTPSConnection(host[0], context=ssl._create_unverified_context())
