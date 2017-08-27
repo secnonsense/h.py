@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import httplib, argparse
+import httplib, argparse, ssl
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-x", "--headers", help="print the http headers of the http response", action="store_true")
@@ -15,6 +15,8 @@ parser.add_argument("-v", "--malware", help="Use known bad User Agent malware", 
 parser.add_argument("-o", "--openvas", help="Use known bad User Agent OpenVAS", action="store_true")
 parser.add_argument("-z", "--meterpreter", help="Use known hacking tool User Agent Meterpreter", action="store_true")
 parser.add_argument("-f", "--save", help="Save the body to a file", action="store_true")
+parser.add_argument("-p", "--proxy", help="Specify the IP address and port of proxy - 127.0.0.1:8080", action="store", dest="proxy")
+parser.add_argument("-u", "--uagent", help="Specify a custom user-agent in quotes", action="store", dest="uagent")
 parser.add_argument("URL", help="Enter a url with or without leading http:// or https://")
 args = parser.parse_args()
 
@@ -50,10 +52,23 @@ elif args.malware:
     headers["User-Agent"] = "malware"
 elif args.openvas:
     headers["User-Agent"] = "OpenVAS"
+elif args.uagent:
+    headers["User-Agent"] = args.uagent
 
+if args.proxy:
+    if args.ssl or "https://" in args.URL:
+        print "\nproxy is not supported for SSL at this time\n"
+        quit()
+    host[0] = args.proxy
+    if "http://" not in args.URL: 
+        filename = "http://" + args.URL
+    else:
+        filename = args.URL    
+    print "proxy: " + host[0]
+    print "URL: " + filename
 
 if args.ssl:
-    conn = httplib.HTTPSConnection(host[0])
+    conn = httplib.HTTPSConnection(host[0], context=ssl._create_unverified_context())
 else:
     conn = httplib.HTTPConnection(host[0])
 conn.request(method, filename, None, headers)
