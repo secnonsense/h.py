@@ -17,9 +17,9 @@ Use the -b option to display the response body to the screen
 
 note - if only a url is specified the default will be to return just the reponse body
 
-./h.py -o www.site.com 
+./h.py -f www.site.com 
 
-Use the -o option to save the response body to a file called "output"
+Use the -f option to save the response body to a file called "output"
 
 ./h.py -xr https://www.google.com
 
