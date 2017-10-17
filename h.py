@@ -15,6 +15,7 @@ parser.add_argument("-m", "--safari", help="Use Mac Safari User Agent", action="
 parser.add_argument("-e", "--edge", help="Use Edge User Agent", action="store_true")
 
 parser.add_argument("-v", "--malware", help="Use known bad User Agent malware", action="store_true")
+parser.add_argument("-y", "--bogusff", help="Use known bad User Agent Firefox/1", action="store_true")
 parser.add_argument("-o", "--openvas", help="Use known bad User Agent OpenVAS", action="store_true")
 parser.add_argument("-z", "--meterpreter", help="Use known hacking tool User Agent Meterpreter", action="store_true")
 
@@ -57,6 +58,8 @@ elif args.malware:
     headers["User-Agent"] = "malware"
 elif args.openvas:
     headers["User-Agent"] = "OpenVAS"
+elif args.bogusff:
+    headers["User-Agent"] = " Firefox/1."
 elif args.uagent:
     headers["User-Agent"] = args.uagent
 
