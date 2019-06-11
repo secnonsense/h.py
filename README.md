@@ -41,6 +41,7 @@ There are also several user-agents that are known to trigger IDS signatures -
 -v = malware  (known active Snort Signature)
 -z = Meterpreter (known active Snort Signature)
 -o = OpenVas Malware Scanner (known active Emerging Threats signature)
+-y = Known bad firefox useragent
 
 ./h.py -u Nessus www.site.com 
 
