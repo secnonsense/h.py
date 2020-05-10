@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import httplib, argparse, ssl
+import http.client, argparse, ssl
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-x", "--headers", help="print the http headers of the http response", action="store_true")
@@ -65,34 +65,34 @@ elif args.uagent:
 
 if args.proxy:
     if args.ssl or "https://" in args.URL:
-        print "\nproxy is not supported for SSL at this time\n"
+        print ("\nproxy is not supported for SSL at this time\n")
         quit()
     host[0] = args.proxy
     if "http://" not in args.URL: 
         filename = "http://" + args.URL
     else:
         filename = args.URL    
-    print "proxy: " + host[0]
-    print "URL: " + filename
+    print ("proxy: " + host[0])
+    print ("URL: " + filename)
 
 if args.ssl:
-    conn = httplib.HTTPSConnection(host[0], context=ssl._create_unverified_context())
+    conn = http.client.HTTPSConnection(host[0], context=ssl._create_unverified_context())
 else:
-    conn = httplib.HTTPConnection(host[0])
+    conn = http.client.HTTPConnection(host[0])
 conn.request(method, filename, None, headers)
 
 httpResponse = conn.getresponse()
 if args.status:
-    print "\nRESPONSE CODE: ", (httpResponse.status)
+    print ("\nRESPONSE CODE: ", (httpResponse.status))
 if args.headers:
-    print "\n========= HEADERS ==========\n", httpResponse.msg
+    print ("\n========= HEADERS ==========\n", httpResponse.msg)
 if args.body and not args.status and not args.headers and not args.save:
-    print httpResponse.read()
+    print (httpResponse.read())
 elif args.save:
-    print filename
+    print (filename)
     output = open("output",'w')
     output.write(httpResponse.read())
     output.close()
 elif args.body:
-    print "============ BODY =============\n", httpResponse.read()
+    print ("============ BODY =============\n", httpResponse.read())
 conn.close()
