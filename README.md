@@ -1,5 +1,5 @@
 # h.py
-Basic HTTP/HTTPS client written in Python 2
+Basic HTTP/HTTPS client written in Python 3
 
 Usage:
 
