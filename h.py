@@ -9,11 +9,6 @@ parser.add_argument("-r", "--status", help="print the status code of the http re
 
 parser.add_argument("-s", "--ssl", help="choose if the request is over ssl", action="store_true")
 
-parser.add_argument("-c", "--chrome", help="Use Chrome on Mac User Agent", action="store_true")
-parser.add_argument("-i", "--ie6", help="Use Internet Explorer 6.0 User Agent", action="store_true")
-parser.add_argument("-m", "--safari", help="Use Mac Safari User Agent", action="store_true")
-parser.add_argument("-e", "--edge", help="Use Edge User Agent", action="store_true")
-
 parser.add_argument("-v", "--malware", help="Use known bad User Agent malware", action="store_true")
 parser.add_argument("-y", "--bogusff", help="Use known bad User Agent Firefox/1", action="store_true")
 parser.add_argument("-o", "--openvas", help="Use known bad User Agent OpenVAS", action="store_true")
@@ -25,6 +20,8 @@ parser.add_argument("-u", "--uagent", help="Specify a custom user-agent in quote
 
 parser.add_argument("URL", help="Enter a url with or without leading http:// or https://")
 args = parser.parse_args()
+
+#this shouldn't be here
 
 if not args.headers and not args.body and not args.status:
     args.body = True
@@ -43,6 +40,8 @@ for x in range(1, len(host), 1):
     x = x+1
 method = 'GET'
 headers = {"Accept": "image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-powerpoint, application/vnd.ms-excel, application/msword, application/x-shockwave-flash, */*", "Accept-Language": "en-us", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; MANM; rv:11.0) like Gecko", "Connection": "Keep-Alive"}
+
+#more comments
 
 if args.ie6:
     headers["User-Agent"] = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0; .NET CLR 1.1.4322; .NET CLR 2.0.50727)"
